@@ -1,8 +1,12 @@
+import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { APP_LOGO, APP_TITLE, getLoginUrl } from "@/const";
 import { Link } from "wouter";
 
 export default function Home() {
+  const { user, isAuthenticated, logout } = useAuth();
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 via-purple-50 to-white">
       {/* Navigation Header */}
@@ -11,9 +15,9 @@ export default function Home() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <span className="text-3xl">🎓</span>
-              <h1 className="text-2xl font-bold text-blue-900">TaRaLa-Hub</h1>
+              <h1 className="text-2xl font-bold text-blue-900">{APP_TITLE}</h1>
             </div>
-            <nav className="hidden md:flex gap-6">
+            <nav className="hidden md:flex gap-6 items-center">
               <Link href="/">
                 <Button variant="ghost">Home</Button>
               </Link>
@@ -26,6 +30,27 @@ export default function Home() {
               <Link href="/videos">
                 <Button variant="ghost">Videos</Button>
               </Link>
+              {isAuthenticated && (
+                <Link href="/admin">
+                  <Button variant="ghost">Admin</Button>
+                </Link>
+              )}
+              <div className="border-l border-gray-300 pl-6">
+                {isAuthenticated ? (
+                  <div className="flex items-center gap-3">
+                    <span className="text-sm text-gray-700">{user?.name}</span>
+                    <Button variant="outline" size="sm" onClick={() => logout()}>
+                      Logout
+                    </Button>
+                  </div>
+                ) : (
+                  <a href={getLoginUrl()}>
+                    <Button variant="default" size="sm">
+                      Login
+                    </Button>
+                  </a>
+                )}
+              </div>
             </nav>
           </div>
         </div>
@@ -209,17 +234,41 @@ export default function Home() {
             <div>
               <h4 className="font-bold mb-4">Quick Links</h4>
               <ul className="space-y-2 text-gray-400">
-                <li><Link href="/worksheets"><span className="hover:text-white">Worksheets</span></Link></li>
-                <li><Link href="/games"><span className="hover:text-white">Games</span></Link></li>
-                <li><Link href="/videos"><span className="hover:text-white">Videos</span></Link></li>
+                <li>
+                  <Link href="/worksheets">
+                    <span className="hover:text-white cursor-pointer">Worksheets</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/games">
+                    <span className="hover:text-white cursor-pointer">Games</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/videos">
+                    <span className="hover:text-white cursor-pointer">Videos</span>
+                  </Link>
+                </li>
               </ul>
             </div>
             <div>
               <h4 className="font-bold mb-4">Resources</h4>
               <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-white">About Us</a></li>
-                <li><a href="#" className="hover:text-white">Contact</a></li>
-                <li><a href="#" className="hover:text-white">Privacy Policy</a></li>
+                <li>
+                  <a href="#" className="hover:text-white">
+                    About Us
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-white">
+                    Contact
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-white">
+                    Privacy Policy
+                  </a>
+                </li>
               </ul>
             </div>
             <div>

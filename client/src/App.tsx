@@ -8,14 +8,17 @@ import Home from "./pages/Home";
 import Worksheets from "./pages/Worksheets";
 import Games from "./pages/Games";
 import Videos from "./pages/Videos";
+import AdminDashboard from "./pages/AdminDashboard";
 
 function Router() {
+  // make sure to consider if you need authentication for certain routes
   return (
     <Switch>
       <Route path={"/"} component={Home} />
       <Route path={"/worksheets"} component={Worksheets} />
       <Route path={"/games"} component={Games} />
       <Route path={"/videos"} component={Videos} />
+      <Route path={"/admin"} component={AdminDashboard} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
