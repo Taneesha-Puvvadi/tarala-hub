@@ -1,0 +1,13 @@
+[build]
+  command = "pnpm install && pnpm build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+# SPA routing - redirect all requests to index.html for client-side routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
