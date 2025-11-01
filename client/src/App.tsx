@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import Worksheets from "./pages/Worksheets";
 import Games from "./pages/Games";
 import Videos from "./pages/Videos";
+import Quizzes from "./pages/Quizzes";
 import AdminDashboard from "./pages/AdminDashboard";
 
 function Router() {
@@ -18,6 +19,7 @@ function Router() {
       <Route path={"/worksheets"} component={Worksheets} />
       <Route path={"/games"} component={Games} />
       <Route path={"/videos"} component={Videos} />
+      <Route path={"/quizzes"} component={Quizzes} />
       <Route path={"/admin"} component={AdminDashboard} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}

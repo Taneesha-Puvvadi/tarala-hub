@@ -35,6 +35,9 @@ export default function Home() {
               <Link href="/videos">
                 <Button variant="ghost" className="text-white hover:bg-white/20">Videos</Button>
               </Link>
+              <Link href="/quizzes">
+                <Button variant="ghost" className="text-white hover:bg-white/20">Quizzes</Button>
+              </Link>
               {isAuthenticated && (
                 <Link href="/admin">
                   <Button variant="ghost" className="text-white hover:bg-white/20">Admin</Button>
@@ -175,6 +178,22 @@ export default function Home() {
                 className="w-full border-pink-400/50 text-pink-300 hover:bg-pink-500/20"
               >
                 Watch Videos →
+              </Button>
+            </Link>
+          </div>
+
+          <div className="group bg-gradient-to-br from-green-500/20 to-emerald-600/20 backdrop-blur-md border border-green-400/30 hover:border-green-400/60 rounded-2xl p-8 transition-all hover:shadow-2xl hover:shadow-green-500/20">
+            <div className="text-6xl mb-6">🎯</div>
+            <h4 className="text-2xl font-bold text-white mb-4">Quizzes</h4>
+            <p className="text-gray-300 mb-6">
+              Test your knowledge with interactive multiple-choice quizzes. Get instant feedback and learn from detailed explanations.
+            </p>
+            <Link href="/quizzes">
+              <Button 
+                variant="outline" 
+                className="w-full border-green-400/50 text-green-300 hover:bg-green-500/20"
+              >
+                Take Quizzes →
               </Button>
             </Link>
           </div>
