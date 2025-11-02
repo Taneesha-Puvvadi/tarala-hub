@@ -3,74 +3,14 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { APP_LOGO, APP_TITLE, getLoginUrl } from "@/const";
 import { Link } from "wouter";
+import Navigation from "@/components/Navigation";
 
 export default function Home() {
   const { user, isAuthenticated, logout } = useAuth();
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
-      {/* Navigation Header */}
-      <header className="bg-white/10 backdrop-blur-md sticky top-0 z-50 border-b border-white/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <span className="text-4xl">🎓</span>
-              <div>
-                <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                  {APP_TITLE}
-                </h1>
-                <p className="text-xs text-gray-300">Learning Made Fun</p>
-              </div>
-            </div>
-            <nav className="hidden md:flex gap-2 items-center">
-              <Link href="/">
-                <Button variant="ghost" className="text-white hover:bg-white/20">Home</Button>
-              </Link>
-              <Link href="/worksheets">
-                <Button variant="ghost" className="text-white hover:bg-white/20">Worksheets</Button>
-              </Link>
-              <Link href="/games">
-                <Button variant="ghost" className="text-white hover:bg-white/20">Games</Button>
-              </Link>
-              <Link href="/videos">
-                <Button variant="ghost" className="text-white hover:bg-white/20">Videos</Button>
-              </Link>
-              <Link href="/quizzes">
-                <Button variant="ghost" className="text-white hover:bg-white/20">Quizzes</Button>
-              </Link>
-              {isAuthenticated && (
-                <Link href="/admin">
-                  <Button variant="ghost" className="text-white hover:bg-white/20">Admin</Button>
-                </Link>
-              )}
-              <div className="border-l border-white/20 pl-4 ml-2">
-                {isAuthenticated ? (
-                  <div className="flex items-center gap-3">
-                    <span className="text-sm text-gray-200">{user?.name}</span>
-                    <Button 
-                      variant="outline" 
-                      size="sm" 
-                      onClick={() => logout()}
-                      className="border-white/30 text-white hover:bg-white/20"
-                    >
-                      Logout
-                    </Button>
-                  </div>
-                ) : (
-                  <a href={getLoginUrl()}>
-                    <Button 
-                      size="sm"
-                      className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white border-0"
-                    >
-                      Login
-                    </Button>
-                  </a>
-                )}
-              </div>
-            </nav>
-          </div>
-        </div>
-      </header>
+      <Navigation />
 
       {/* Hero Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
